@@ -1,4 +1,54 @@
-// console.log("mop");
+function injectStyles() {
+    const style = document.createElement("style");
+    style.textContent = `
+        body {
+          font-family: Arial, sans-serif;
+          background: #f0f0f0;
+          margin: 0;
+          padding: 20px;
+          text-align: center;
+        }
+
+        button {
+          padding: 10px 20px;
+          font-size: 16px;
+          margin: 5px;
+          border: 1px solid #333;
+          border-radius: 6px;
+          background: #fff;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background: #e0e0e0;
+        }
+
+        #scoreBoard {
+          margin-top: 15px;
+          font-size: 18px;
+          font-weight: bold;
+        }
+
+        #roundResult {
+          margin-top: 10px;
+          font-size: 16px;
+        }
+
+        #winnerCard {
+          margin-top: 15px;
+          font-size: 20px;
+          font-weight: bold;
+          color: darkred;
+        }
+
+        #buttonPanel {
+          margin-top: 20px;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+injectStyles();
 
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
@@ -80,6 +130,7 @@ const roundResult = document.createElement("div");
 roundResult.textContent = "Begin Playing";
 const display = document.createElement("div");
 const winnerCard = document.createElement("div");
+
 winnerCard.textContent = "**********"
 display.appendChild(roundResult);
 display.appendChild(scoreBoard);
@@ -96,6 +147,11 @@ buttonPanel.style.display = "flex";
 buttonPanel.style.gap = "15px";
 buttonPanel.style.justifyContent = "space-around";
 buttonPanel.style.margin = "10px";
+
+buttonPanel.setAttribute("id", "buttonPanel");
+scoreBoard.setAttribute("id", "scoreBoard");
+roundResult.setAttribute("id", "roundResult");
+winnerCard.setAttribute("id", "winnerCard");
 
 document.addEventListener("click", (e) => {
     if(e.target.id && computerScore<5 && humanScore <5)
@@ -119,5 +175,7 @@ document.addEventListener("click", (e) => {
 
 
 }
+
 playGame();
+
 
